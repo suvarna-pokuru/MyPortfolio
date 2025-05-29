@@ -1,0 +1,1299 @@
+/*=============== GOOGLE FONTS ===============*/
+@import url("https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@400;500;600;700&family=Fira+Mono:wght@400;700&display=swap");
+
+/*=============== VARIABLES CSS ===============*/
+:root {
+  --header-height: 3.5rem;
+  /*========== Colors ==========*/
+  --color-white: #fff;
+  --color-black: #000;
+  --color-dark-mode: #11111b;
+  --color-light-mode: #ece7e1;
+  --color-ddd-color: #ddd;
+  --color-gray: #c4c4c4;
+  --color-purple: #8000ff;
+  --color-light-purple: #cf59e6;
+  --color-light-blue: #6bc5f8;
+  --color-navbarBorder-dark: #e2e2e207;
+  --color-shadowDark: rgba(0, 0, 0, 0.137);
+  --static-heading-gradient-blue: #b0f3f1;
+  --static-heading-gradient-pink: #ffcfdf;
+  --tech-stack-box-first-color: #1a1a29;
+  --tech-stack-box-second-color: rgba(27, 27, 40, 0);
+  --tech-stack-box-border-color: #292929;
+
+  /* Map new colors to existing variable names for consistency */
+  --first-color: var(--color-purple); /* Used for accents, borders, etc. */
+  --second-color: var(--color-light-blue); /* Used for gradients */
+  --navbar-bg: rgba(var(--color-dark-mode), 0.95); /* Dark blurred navbar */
+  --hero-bg: radial-gradient(ellipse at 60% 40%, #1a1625 60%, var(--color-dark-mode) 100%); /* Dark gradient background */
+  --white: var(--color-white); /* White text */
+  --gray: var(--color-gray); /* Gray text */
+  --button-gradient: linear-gradient(90deg, var(--color-purple) 0%, var(--color-light-blue) 100%); /* Button gradient */
+  --title-color: var(--color-white); /* Titles are white */
+  --text-color: var(--color-gray); /* Default text is gray */
+  --body-color: var(--color-dark-mode); /* Base body color */
+  --container-color: #292929; /* Example dark container color */
+
+
+  /*========== Font and typography ==========*/
+  /*.5rem = 8px | 1rem = 16px ...*/
+  --body-font: "Bai Jamjuree", sans-serif;
+  --biggest-font-size: 2.5rem;
+  --h1-font-size: 1.75rem;
+  --h2-font-size: 1.25rem;
+  --h3-font-size: 1.125rem;
+  --normal-font-size: .938rem;
+  --small-font-size: .813rem;
+  --smaller-font-size: .75rem;
+
+  /*========== Font weight ==========*/
+  --font-regular: 400;
+  --font-medium: 500;
+  --font-semi-bold: 600;
+  --font-bold: 700;
+
+  /*========== z index ==========*/
+  --z-tooltip: 10;
+  --z-fixed: 100;
+}
+
+/*========== Responsive typography ==========*/
+@media screen and (min-width: 1150px) {
+  :root {
+    --biggest-font-size: 4.5rem;
+    --h1-font-size: 3rem;
+    --h2-font-size: 1.5rem;
+    --h3-font-size: 1.25rem;
+    --normal-font-size: 1rem;
+    --small-font-size: .875rem;
+    --smaller-font-size: .813rem;
+  }
+}
+
+/*=============== BASE ===============*/
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Bai Jamjuree', sans-serif;
+  background: var(--hero-bg); /* Use the new dark gradient background */
+  color: var(--text-color); /* Use the new default text color (gray) */
+  min-height: 100vh;
+  overscroll-behavior: none;
+}
+
+h1, h2, h3, h4 {
+  color: var(--title-color); /* Use the new title color (white) */
+  font-weight: var(--font-bold);
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/*=============== THEME ===============*/
+/* Light mode styles */
+body.light-mode {
+    background: var(--color-light-mode);
+    color: var(--color-black);
+}
+
+body.light-mode h1,
+body.light-mode h2,
+body.light-mode h3,
+body.light-mode h4 {
+    color: var(--color-black);
+}
+
+body.light-mode .custom-navbar {
+    background: rgba(var(--color-light-mode), 0.95);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.18);
+}
+
+body.light-mode .navbar-links li a {
+    color: var(--color-black);
+}
+
+body.light-mode .navbar-links li a.active-link,
+body.light-mode .navbar-links li a:hover,
+body.light-mode .navbar-links li a:focus {
+    background: linear-gradient(90deg, var(--color-purple) 0%, var(--color-light-blue) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+body.light-mode .navbar-links li a.active-link::before {
+     background: linear-gradient(90deg, var(--color-purple) 0%, var(--color-light-blue) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+body.light-mode .hero-greeting,
+body.light-mode .hero-title {
+    color: var(--color-black);
+}
+
+body.light-mode .hero-description {
+    color: #555; /* Slightly darker gray for light mode */
+}
+
+
+body.light-mode .settings-container .setting-button,
+body.light-mode .settings-container .visualmode-toggle-button-container label,
+body.light-mode .settings-container .sound-toggle-button-container label {
+    cursor: pointer;
+    color: var(--white);
+    transition: color 0.3s;
+}
+
+.settings-container .setting-button:hover,
+.settings-container .visualmode-toggle-button-container label:hover,
+.settings-container .sound-toggle-button-container label:hover {
+    color: var(--first-color);
+}
+
+/* Removed light mode style for support-me-button */
+
+
+/*=============== REUSABLE CSS CLASSES ===============*/
+.container {
+  max-width: 1120px;
+  margin-inline: 1.5rem;
+}
+
+.grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.section {
+  padding-block: 4rem 2rem;
+}
+
+.section__title-1,
+.section__title-2 {
+  position: relative;
+  font-size: var(--h1-font-size);
+  width: max-content;
+  margin: .75rem auto 2rem;
+}
+
+.section__title-1 span,
+.section__title-2 span {
+  z-index: 5;
+  position: relative;
+}
+
+.section__title-1::after,
+.section__title-2::after {
+  content: "";
+  width: 40px;
+  height: 28px;
+  background-color: hsla(260, 100%, 50%, .2); /* Adjusted accent color */
+  position: absolute;
+  top: -4px;
+  right: -8px;
+}
+
+.section__title-2::after {
+  top: initial;
+  bottom: -4px;
+}
+
+.geometric-box {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: var(--first-color); /* Use the new first color */
+  rotate: -30deg;
+}
+
+.geometric-box::after {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border: 3px solid var(--color-black); /* Use the new black color */
+  left: -5px;
+  top: -5px;
+}
+
+.main {
+  overflow: hidden; /* For animation ScrollReveal */
+}
+
+/*=============== HEADER & NAV ===============*/
+.header {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: var(--z-fixed);
+}
+
+/* Navigation for mobile devices */
+
+
+/* Show menu */
+
+
+/* Add shadow header */
+
+
+/* Active link */
+
+/*=============== NAVBAR ===============*/
+.custom-navbar {
+    width: 90%;
+    max-width: 1100px;
+    margin: 2rem auto 0 auto;
+    padding: 0.5rem 2rem;
+    background: var(--navbar-bg); /* This variable is set to a semi-transparent dark color */
+    border-radius: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
+    backdrop-filter: blur(8px); /* Adds the blur effect */
+    position: fixed; /* Makes the navbar fixed at the top */
+    top: 1.5rem; /* Adds space from the top */
+    left: 50%; /* Centers the navbar horizontally */
+    transform: translateX(-50%); /* Adjusts for centering */
+    z-index: var(--z-fixed); /* Ensures it's above other content */
+}
+
+.navbar-avatar-img {
+    width: 40px; /* Adjust size as needed */
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.navbar-links {
+    display: flex;
+    gap: 1.5rem; /* Space between links */
+}
+
+.navbar-links li a {
+    font-family: 'Fira Mono', monospace; /* Sets the font for the links */
+    font-size: 1rem; /* Reduced font size */
+    font-weight: 400;
+    color: var(--white); /* Default link color is white */
+    text-decoration: none; /* Ensure no underline */
+    padding: 0.5rem 1.2rem; /* Restore padding */
+    letter-spacing: 0.5px;
+    border-radius: 1.5rem;
+    transition: color 0.2s; /* Transition only color */
+    display: flex;
+    align-items: center;
+    background: none;
+    position: relative;
+}
+
+.navbar-links li a:hover {
+    background: linear-gradient(90deg, var(--color-purple) 0%, var(--color-light-blue) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.navbar-links li a.active-link {
+    background: linear-gradient(90deg, var(--color-purple) 0%, var(--color-light-blue) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Removed duplicate .navbar-links li a.active-link::before rules */
+.navbar-links li a.active-link::before {
+    content: "•"; /* Dot indicator */
+    position: absolute;
+    left: -1rem; /* Position the dot to the left */
+    color: var(--first-color); /* Color of the dot */
+    font-size: 1.5rem; /* Size of the dot */
+    line-height: 1;
+}
+
+
+/*=============== HOME ===============*/
+.hero-section {
+    width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    background: none;
+    padding-top: 5rem; /* Add padding to account for fixed navbar */
+}
+
+.hero-content {
+    margin-left: 10vw;
+    margin-top: 4rem;
+    max-width: 700px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative; /* Needed for positioning social/settings */
+}
+
+.hero-greeting {
+    font-size: 1.5rem;
+    color: var(--white); /* Use white for greeting */
+    font-family: 'Fira Mono', monospace;
+    margin-bottom: 1.5rem;
+    font-weight: bold;
+}
+
+.hero-title {
+    font-size: 3.2rem;
+    font-weight: 900;
+    color: var(--white); /* Use white for title */
+    margin-bottom: 1.2rem;
+    line-height: 1.1;
+}
+
+.hero-name-gradient {
+    background: linear-gradient(90deg, var(--color-purple) 0%, var(--color-light-blue) 100%); /* Use new gradient colors */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: inline-block;
+    font-size: 4rem; /* Increased size */
+    font-weight: 900;
+}
+
+/* Style for the subtitle below the main name */
+.hero-subtitle {
+    font-size: 2.5rem; /* Increased size */
+    font-weight: 700;
+    color: var(--white);
+    display: block;
+    margin-top: 0.5rem;
+}
+
+/* Container to group button and social links */
+.hero-cta-social-group {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 2rem;
+    flex-wrap: wrap; /* Allows wrapping on small screens */
+    justify-content: flex-start; /* Ensures items align left-to-right */
+}
+
+.hero-social {
+    position: static; /* Remove absolute positioning */
+    margin-top: 2rem; /* Space below the description */
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    font-size: 2rem;
+    justify-content: flex-start; /* Left align */
+}
+
+.hero-description {
+    color: var(--gray); /* Use gray for description */
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    max-width: 600px;
+    font-weight: 400;
+}
+
+
+
+/* Hero Social Links */
+.hero-social {
+  position: static; /* or just remove this line */
+  margin-top: 2rem; /* Space below the description */
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  font-size: 2rem;
+  justify-content: flex-start; /* Left align */
+}
+
+.hero-social-link {
+    color: var(--white);
+    transition: color 0.3s;
+}
+
+.hero-social-link:hover {
+    color: var(--first-color);
+}
+
+/* Settings/Theme/Sound Toggles */
+.settings-container {
+    position: absolute;
+    bottom: 2rem; /* Align with social links */
+    right: 0;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.5rem;
+}
+
+.settings-container .setting-button,
+.settings-container .visualmode-toggle-button-container label,
+.settings-container .sound-toggle-button-container label {
+    cursor: pointer;
+    color: var(--white);
+    transition: color 0.3s;
+}
+
+.settings-container .setting-button:hover,
+.settings-container .visualmode-toggle-button-container label:hover,
+.settings-container .sound-toggle-button-container label:hover {
+    color: var(--first-color);
+}
+
+/* Hide default checkboxes */
+.settings-container input[type="checkbox"] {
+    display: none;
+}
+
+/* Style for the sound icon when muted */
+.settings-container #switchforsound:checked + label i {
+    content: "\e99a"; /* Remixicon volume-line */
+}
+
+/* Add styles to show/hide settings menu */
+.settings-container {
+    position: absolute;
+    bottom: 2rem;
+    right: 0;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.5rem;
+    /* Initial state: hidden and positioned off-screen or collapsed */
+    /* You might need to adjust this based on how you want the menu to appear */
+    /* Example: */
+    /* transform: translateX(100%); */
+    /* opacity: 0; */
+    /* transition: transform 0.3s ease-out, opacity 0.3s ease-out; */
+}
+
+/*=============== BUTTON ===============*/
+/* Already styled hero-cta-btn above */
+
+/*=============== ABOUT ===============*/
+.about__description {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--gray);
+}
+
+.about-container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 3rem;
+    max-width: calc(100%-20vw); /* Increased max-width to reduce side space */
+    margin: 2rem auto; /* Center the container and add vertical margin */
+    flex-wrap: wrap;
+    margin-left: 1vw; /* Aligns with navbar content */
+    margin-right: 1vw;
+    width: auto;
+}
+
+.about-text {
+    flex: 1 1 320px;
+    max-width: 700px; /* Increased max-width for text */
+    color: var(--color-gray);
+    font-size: 1.1rem;
+    line-height: 1.7;
+}
+
+.about-avatar {
+    order: 2;
+    flex: 0 0 220px; /* Keep the base size */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative; /* Needed for pseudo-elements */
+    padding: 15px; /* Add padding to make space for the frame lines */
+}
+
+.about-avatar img {
+    width: 220px;
+    height: 220px;
+    object-fit: cover;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+    background: var(--container-color);
+    /* Ensure no border on the image itself */
+    border: none;
+}
+
+/* Add the purple frame using pseudo-elements */
+.about-avatar::before,
+.about-avatar::after {
+    content: "";
+    position: absolute;
+    width: 50px; /* Length of the lines */
+    height: 50px; /* Length of the lines */
+    border: 2px solid var(--first-color); /* Purple border */
+}
+
+.about-avatar::before {
+    top: 0;
+    right: 0;
+    border-bottom: none;
+    border-left: none;
+}
+
+.about-avatar::after {
+    bottom: 0;
+    left: 0;
+    border-top: none;
+    border-right: none;
+}
+
+/*=============== SKILLS ===============*/
+.skills__list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2.5rem;                 /* spacing between each skill box */
+  padding: 2rem 6rem;          /* left-right spacing from container edge */
+  max-width: 1200px;           /* control total width */
+  margin: 0 auto;              /* center horizontally */
+  flex-wrap: nowrap;           /* single line */
+  overflow-x: auto;            /* scroll if screen is small */
+}
+.skills__item {
+  background: var(--tech-stack-box-first-color);
+  border: 1px solid var(--tech-stack-box-border-color);
+  border-radius: 10px;
+  padding: 2.5rem 2rem;  /* Increased internal spacing */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: background 0.3s, border-color 0.3s;
+  min-width: 150px;       /* Slightly wider */
+  min-height: 180px;      /* Slightly taller */
+}
+
+
+
+.skills__item:hover {
+    background: linear-gradient(180deg, var(--tech-stack-box-first-color) 0%, var(--tech-stack-box-second-color) 100%);
+    border-color: var(--first-color);
+}
+
+.skills__item i {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    color: var(--first-color); /* Use accent color for icons */
+}
+
+.skills__title {
+    font-size: var(--normal-font-size);
+    color: var(--white);
+    font-weight: var(--font-medium);
+}
+
+/*=============== PROJECTS ===============*/
+.projects__subtitle {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-family: 'Fira Mono', monospace;
+  font-size: 1.1rem;
+  color: var(--gray);
+}
+
+.projects__subtitle span {
+  margin: 0 0.5rem;
+  color: var(--gray);
+}
+
+.projects__list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.projects__item {
+  background: var(--tech-stack-box-first-color);
+  border: 1px solid var(--tech-stack-box-border-color);
+  border-radius: 8px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  transition: background 0.3s, border-color 0.3s;
+  align-items: flex-start;
+}
+
+.projects__item:hover {
+  background: linear-gradient(180deg, var(--tech-stack-box-first-color) 0%, var(--tech-stack-box-second-color) 100%);
+  border-color: var(--first-color);
+}
+
+.project-card-image {
+  flex: 0 0 auto;
+  width: 200px;
+  height: auto;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.project-card-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.project-card-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.project-icon {
+    font-size: 3rem;
+    color: var(--first-color);
+    margin-bottom: 0.5rem;
+}
+
+.projects__title {
+  font-size: var(--h3-font-size);
+  margin-bottom: 0.5rem;
+  color: var(--white);
+}
+
+.projects__description {
+  font-size: var(--normal-font-size);
+  color: var(--gray);
+  margin-bottom: 1rem;
+  flex-grow: 1;
+}
+
+.projects__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Fira Mono', monospace;
+  font-size: var(--normal-font-size);
+  color: var(--first-color);
+  text-decoration: none;
+  font-weight: var(--font-medium);
+  transition: color 0.3s;
+}
+
+.projects__link:hover {
+  color: var(--second-color);
+}
+
+.projects__link i {
+  font-size: 1.2rem;
+  color: var(--first-color);
+}
+*/
+
+/* New styles based on reference */
+.projects-section-container {
+    /* Add padding/margin if needed, section class already provides some */
+}
+
+.projects-section-div {
+    width: 60%; /* As per reference CSS */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto; /* Center the div */
+    max-width: 1000px; /* Optional: Limit max width */
+}
+
+.project-boxes-div {
+    display: flex;
+    flex-direction: column; /* Stack project wrappers vertically */
+    gap: 2rem; /* Space between project wrappers */
+    width: 100%; /* Take full width of projects-section-div */
+}
+
+.project-box-wrapper {
+    width: 100%; /* Take full width */
+    /* Add AOS styles if using the library */
+}
+
+.project-box {
+    background: var(--tech-stack-box-first-color); /* Use your existing card background */
+    border: 1px solid var(--tech-stack-box-border-color); /* Use your existing border */
+    border-radius: 8px; /* Use your existing border-radius */
+    padding: 1.5rem; /* Use your existing padding */
+    display: flex; /* Arrange content horizontally */
+    flex-direction: row;
+    gap: 1.5rem; /* Space between icon/image and text */
+    align-items: center; /* Vertically align content */
+    transition: background 0.3s, border-color 0.3s; /* Add hover transition */
+}
+
+.project-box:hover {
+    background: linear-gradient(180deg, var(--tech-stack-box-first-color) 0%, var(--tech-stack-box-second-color) 100%);
+    border-color: var(--first-color);
+}
+
+.project-icon {
+    font-size: 4rem; /* Size of the icon */
+    color: var(--first-color); /* Color of the icon */
+}
+
+.info-div {
+    flex: 1; /* Allow info to take remaining space */
+    display: flex;
+    flex-direction: column; /* Stack title, description, buttons vertically */
+    gap: 0.5rem; /* Space between elements in info-div */
+}
+
+.ProjectHeading {
+    font-size: var(--h3-font-size); /* Use your existing title size */
+    color: var(--white); /* Use your existing title color */
+    font-weight: var(--font-bold); /* Use your existing title weight */
+    margin-bottom: 0.5rem; /* Space below title */
+}
+
+.ProjectDescription {
+    font-size: var(--normal-font-size); /* Use your existing description size */
+    color: var(--gray); /* Use your existing description color */
+    line-height: 1.6; /* Add some line height for readability */
+    margin-bottom: 1rem; /* Space below description */
+    flex-grow: 1; /* Push buttons to the bottom if info-div is flex column */
+}
+
+.project-buttons {
+    display: flex; /* Arrange buttons horizontally */
+    gap: 1rem; /* Space between buttons */
+    align-items: center;
+}
+
+.github-redirect {
+    display: inline-flex; /* Align icon and text */
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Fira Mono', monospace;
+    font-size: var(--normal-font-size);
+    color: var(--first-color);
+    text-decoration: none;
+    font-weight: var(--font-medium);
+    transition: color 0.3s;
+}
+
+.github-redirect:hover {
+    color: var(--second-color);
+}
+
+.github-redirect i {
+    font-size: 1.2rem;
+    color: var(--first-color);
+}
+
+/*=============== CONTACT ===============*/
+.contact__description-1,
+.contact__description-2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: var(--gray);
+}
+
+.contact__description-2 b {
+    color: var(--white);
+}
+
+.contact__title {
+    text-align: center;
+    font-size: var(--h2-font-size);
+    margin-bottom: 2rem;
+    color: var(--white);
+}
+
+.contact__form {
+    max-width: 600px;
+    margin: 0 auto;
+    display: grid;
+    gap: 1.5rem;
+    padding: 0 1rem;
+}
+
+.contact__fields {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.contact__input {
+    width: 100%;
+    padding: 1rem;
+    background: var(--tech-stack-box-first-color);
+    border: 1px solid var(--tech-stack-box-border-color);
+    border-radius: 8px;
+    color: var(--white);
+    font-family: 'Bai Jamjuree', sans-serif;
+    font-size: var(--normal-font-size);
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.contact__input:focus {
+    border-color: var(--first-color);
+}
+
+.contact__input::placeholder {
+    color: var(--gray);
+}
+
+.contact__form textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+
+.contact__form .button {
+    /* Removed old button styling */
+    /*
+    display: inline-block;
+    background: var(--button-gradient);
+    color: var(--white);
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-family: var(--body-font);
+    font-size: var(--normal-font-size);
+    font-weight: var(--font-medium);
+    transition: background 0.3s ease;
+    text-align: center;
+    text-decoration: none;
+    */
+
+    /* Existing positioning */
+    justify-self: center;
+    margin-top: 1rem;
+
+    /* Added new button styling based on .letsTalkBtn */
+    position: relative;
+    border: none;
+    width: 180px;
+    height: 40px;
+    border-radius: 0; /* Keep 0 as per provided style */
+    cursor: pointer;
+    transition: .3s;
+    padding: 0; /* Remove default button padding */
+    background: none; /* Remove default background */
+}
+
+/* Added styling for the inner text span */
+.contact__form .letsTalkBtn-text {
+    display: flex; /* Use flex to center content */
+    width: 100%;
+    height: 100%;
+    background-color: rgba(230, 230, 230, .466);
+    border: none;
+    border-radius: 7px;
+    backdrop-filter: blur(5px);
+    color: #000; /* Text color */
+    align-items: center;
+    justify-content: center;
+    letter-spacing: .8px;
+    font-family: var(--body-font); /* Use your body font */
+    font-size: var(--normal-font-size); /* Use your normal font size */
+    font-weight: var(--font-medium); /* Use your font weight */
+}
+
+
+/* Added styling for the background pseudo-element */
+.contact__form .letsTalkBtn::before {
+    content: ""; /* Required for pseudo-elements */
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(150deg, #71cbff, #8000ff); /* Use the specified gradient */
+    z-index: -1; /* Place behind the button text */
+    left: 6px;
+    top: 6px;
+    border-radius: 7px;
+    pointer-events: none; /* Allow clicks to pass through */
+    transition: .3s;
+}
+
+/* Added hover and active effects */
+.contact__form .letsTalkBtn:hover {
+    transform: translateY(-2px) translateX(-2px);
+}
+
+.contact__form .letsTalkBtn:hover::before {
+    transform: translateY(2px) translateX(2px);
+}
+
+.contact__form .letsTalkBtn:active {
+    transform: translateY(7px) translateX(7px);
+}
+
+.contact__form .letsTalkBtn:active::before {
+    transform: translateY(-7px) translateX(-7px);
+}
+
+.contact__social {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 3rem;
+    font-size: 1.8rem;
+}
+
+footer {
+    width: 100%;
+    height: 100vh; /* Set height to 100vh as per structure */
+    position: relative; /* Needed for absolute positioning of foreground */
+    overflow: hidden; /* Hide overflow from blob */
+    display: flex; /* Use flex to align background/foreground */
+    flex-direction: column;
+    justify-content: flex-end; /* Push content to the bottom */
+    background-color: var(--body-color); /* Use body background color */
+    border-top: 1px solid var(--tech-stack-box-border-color); /* Add top border */
+}
+
+#backtotopbutton {
+    position: absolute;
+    right: 1rem; /* Position on the right */
+    bottom: 1rem; /* Position from the bottom */
+    z-index: 10; /* Ensure it's above other content */
+    background: none;
+    border: none;
+    color: var(--gray); /* Gray text color */
+    font-family: 'Fira Mono', monospace; /* Use Fira Mono */
+    font-size: var(--smaller-font-size); /* Smaller font size */
+    text-decoration: none;
+    writing-mode: vertical-rl; /* Rotate text vertically */
+    text-orientation: mixed;
+    transform: rotate(180deg); /* Rotate to read bottom-up */
+    transition: color 0.3s;
+    cursor: pointer;
+    padding: 0; /* Remove default button padding */
+}
+
+#backtotopbutton:hover {
+    color: var(--white); /* White on hover */
+}
+
+.footer-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; /* Take full height of footer */
+    background-color: var(--body-color); /* Use body background color */
+    display: flex;
+    align-items: flex-end; /* Align blob to the bottom */
+    justify-content: center;
+    z-index: 1;
+}
+
+.footer-blob {
+    width: 100%;
+    max-width: 800px; /* Limit blob width */
+    height: 200px;
+    background-color: var(--color-light-purple); /* Use light purple color */
+    border-radius: 50%;
+    filter: blur(100px); /* Add blur effect */
+    opacity: .7; /* Add opacity */
+}
+
+.footer-foreground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; /* Take full height of footer */
+  display: flex; /* Use flexbox */
+  align-items: center; /* Center items vertically */
+  justify-content: center; /* Center items horizontally */
+  z-index: 2; /* Ensure it's above the background */
+  padding-bottom: 2rem; /* Add padding at the bottom */
+}
+
+.footercontainer {
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+  align-items: center; /* Center items horizontally */
+  gap: 1.5rem; /* Reduced space between sections */
+  max-width: 1100px; /* Match navbar max-width */
+  width: 100%;
+  padding: 0 1rem; /* Add horizontal padding */
+}
+
+.two-words article {
+  font-family: 'Fira Mono', monospace; /* Use Fira Mono */
+  font-size: var(--h3-font-size); /* Use h3 size */
+  color: var(--white); /* White text color */
+  text-align: center;
+  font-weight: var(--font-regular); /* Regular font weight */
+}
+/* Example rule to make the email icon white */
+#GmailLogo path {
+  fill: var(--white);
+}
+.social-media-container {
+  display: flex;
+  flex-direction: column; /* Stack heading and logos vertically */
+  align-items: center; /* Center items horizontally */
+  gap: 1rem; /* Space between heading and logos */
+}
+
+.logos {
+  display: flex;
+  gap: 1.5rem; /* Space between social icons */
+}
+
+.SocialHandle {
+  width: 24px; /* Size of the SVG icons */
+  height: 24px;
+  fill: var(--white); /* Default icon color (should be white) */
+  transition: fill 0.3s;
+}
+
+.logos a {
+  display: flex; /* Center the SVG inside the link */
+  align-items: center;
+  justify-content: center;
+  width: 40px; /* Size of the circular background */
+  height: 40px;
+  border: 1px solid var(--gray); /* Gray border */
+  border-radius: 50%; /* Make it circular */
+  transition: border-color 0.3s;
+}
+
+.logos a:hover {
+  border-color: var(--first-color); /* Accent color border on hover */
+}
+
+.logos a:hover .SocialHandle {
+  fill: var(--first-color); /* Accent color icon on hover */
+}
+
+.getintouch-heading article {
+    font-family: 'Fira Mono', monospace; /* Use Fira Mono */
+    font-size: var(--normal-font-size); /* Normal font size */
+    color: var(--first-color); /* Use accent color */
+    font-weight: var(--font-medium); /* Medium font weight */
+}
+
+.footer-bottom article {
+    font-family: 'Fira Mono', monospace; /* Use Fira Mono */
+    font-size: var(--smaller-font-size); /* Smaller font size */
+    color: var(--gray); /* Gray text color */
+    text-align: center;
+}
+
+.footer-bottom {
+     /* Added background color */
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80px; /* Added height */
+    z-index: 3; /* Added z-index */
+    /* Removed old styles */
+    /* font-family: 'Fira Mono', monospace; */
+    /* font-size: var(--smaller-font-size); */
+    /* color: var(--gray); */
+    /* text-align: center; */
+}
+
+
+/*=============== BREAKPOINTS ===============*/
+/* For small devices */
+@media screen and (max-width: 340px) {
+    .container {
+        margin-inline: 1rem;
+    }
+
+    .section {
+        padding-block: 3rem 1.5rem;
+    }
+
+    .skills__list,
+    .projects__list,
+    .contact__fields {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-content {
+        margin-left: 5vw;
+        margin-top: 2rem;
+    }
+
+    .hero-title,
+    .hero-name-gradient {
+        font-size: 2rem;
+    }
+
+    .hero-social,
+    .settings-container {
+        bottom: 1rem;
+        font-size: 1.2rem;
+    }
+
+    /* Removed support-me-button small device style */
+}
+
+/* For medium devices */
+@media screen and (min-width: 576px) {
+    .hero-content {
+        margin-left: 15vw;
+    }
+
+    .skills__list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .projects__list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .contact__fields {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .section {
+        padding-block: 6rem 2rem;
+    }
+
+    .hero-content {
+        margin-left: 10vw; /* Adjust margin for larger screens */
+    }
+
+    .hero-social {
+        bottom: 3rem; /* Adjust position */
+        left: 10vw; /* Align with content */
+    }
+
+    .settings-container {
+        bottom: 3rem; /* Align with social */
+        right: 10vw; /* Align with content */
+    }
+
+    .about__description {
+        max-width: 700px;
+        margin-inline: auto;
+    }
+
+    .skills__list {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .projects__list {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .contact__form {
+        max-width: 700px;
+    }
+}
+
+/* For large devices */
+@media screen and (min-width: 1150px) {
+    .container {
+        margin-inline: auto;
+    }
+
+    .section {
+        padding-block: 7rem 2rem;
+    }
+
+    .hero-content {
+        margin-left: 15vw; /* Further adjust margin */
+    }
+
+    .hero-social {
+        left: 15vw; /* Align with content */
+    }
+
+    .settings-container {
+        /* Hide the settings container */
+        display: none;
+    }
+
+    .skills__list {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .projects__list {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .contact__form {
+        max-width: 800px;
+    }
+
+    .footer__links {
+        margin-bottom: 1.5rem;
+    }
+
+    .footer__copy {
+        font-size: var(--normal-font-size);
+    }
+}
+
+.about-container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 3rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+
+.about-text {
+    flex: 1 1 320px;
+    max-width: 600px;
+    color: var(--color-gray);
+    font-size: 1.1rem;
+    line-height: 1.7;
+}
+
+.about-avatar {
+    flex: 0 0 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.about-avatar img {
+    width: 220px;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+    background: var(--container-color);
+}
